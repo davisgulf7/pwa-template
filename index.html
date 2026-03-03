@@ -6,22 +6,57 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="apple-touch-icon" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="description" content="A PWA template by GulfStudios" />
     <title>GulfStudios PWA App</title>
 </head>
 
-<body>
-    <div id="app">
-        <header>
-            <h1>GulfStudios PWA Template</h1>
-        </header>
-        <main>
-            <p>Your new offline-capable app is ready to build!</p>
-            <button id="demo-btn">Click me</button>
-            <p id="demo-output"></p>
-        </main>
+<body class="flex flex-col min-h-screen">
+
+    <header class="bg-blue-600 text-white p-4 shadow-md w-full">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">GulfStudios PWA Template</h1>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto p-6 lg:px-8 mt-8" aria-label="Main Content">
+        <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-200 dark:border-gray-700 text-center">
+            <h2 class="text-2xl font-semibold mb-4">Your new offline-capable app is ready!</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">This template comes pre-configured with TailwindCSS,
+                offline Service Workers, and an accessible layout skeleton.</p>
+
+            <button id="demo-btn" aria-label="Click this to test javascript interactions"
+                class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm">
+                Click For JavaScript Test
+            </button>
+
+            <p id="demo-output" class="mt-4 font-medium text-green-600 dark:text-green-400 h-6"></p>
+        </div>
+    </main>
+
+    <footer class="p-6 text-center text-gray-500 dark:text-gray-400 text-sm mt-auto w-full">
+        <p>&copy; GulfStudios - Built with Vite</p>
+    </footer>
+
+    <!-- Vanilla JS PWA Reload Toast -->
+    <div id="pwa-toast"
+        class="fixed bottom-4 right-4 z-[9999] p-4 bg-slate-800 text-white rounded-lg shadow-2xl border border-slate-700 max-w-sm hidden transition-opacity duration-300 opacity-0"
+        role="alert" aria-live="assertive">
+        <div class="mb-3">
+            <h3 class="font-bold text-lg">New Update Available!</h3>
+            <p class="text-sm text-slate-300 mt-1">A new version of the app is ready. Reload to update.</p>
+        </div>
+        <div class="flex gap-2">
+            <button id="pwa-refresh"
+                class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md font-bold text-sm transition-colors flex-1"
+                aria-label="Reload App to install new version">Reload</button>
+            <button id="pwa-close"
+                class="bg-slate-700 hover:bg-slate-600 text-slate-300 px-4 py-2 rounded-md font-bold text-sm transition-colors"
+                aria-label="Close this update notification">Close</button>
+        </div>
     </div>
+
     <script type="module" src="/src/main.js"></script>
 </body>
 
