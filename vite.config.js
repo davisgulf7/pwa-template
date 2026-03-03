@@ -9,6 +9,9 @@ export default defineConfig({
     base: '/__REPO_NAME__/',
     plugins: [
         VitePWA({
+            // ⚠️ PWA UPDATE MODE:
+            // Default: 'autoUpdate' -> Silent background updates (best for simple apps)
+            // Change to: 'prompt' -> Shows a "Reload" UI toast (best for heavy apps like AAC)
             registerType: 'autoUpdate',
             includeAssets: ['vite.svg'],
             manifest: {

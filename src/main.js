@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let updateServiceWorker;
 
             updateServiceWorker = registerSW({
-                // Change to 'prompt' so we can control when the update happens via our UI toast
+                // This hook only fires if vite.config.js has registerType: 'prompt'
                 onNeedRefresh() {
                     console.log('New content available, showing update prompt.');
                     pwaToast.classList.remove('hidden');
@@ -38,17 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // If the user clicks 'Reload', tell the SW to update and refresh the page
-            pwaRefreshBtn.addEventListener('click', () => {
-                if (updateServiceWorker) {
-                    updateServiceWorker(true);
-                }
-            });
+            if (pwaRefreshBtn) {
+                pwaRefreshBtn.addEventListener('click', () => {
+                    if (updateServiceWorker) {
+                        updateServiceWorker(true);
+                    }
+                });
+            }
 
             // If the user clicks 'Close', hide the toast
-            pwaCloseBtn.addEventListener('click', () => {
-                pwaToast.classList.add('opacity-0');
-                setTimeout(() => pwaToast.classList.add('hidden'), 300);
-            });
+            if (pwaCloseBtn) {
+                pwaCloseBtn.addEventListener('click', () => {
+                    pwaToast.classList.add('opacity-0');
+                    setTimeout(() => pwaToast.classList.add('hidden'), 300);
+                });
+            }
         }).catch((error) => console.error('Service worker registration import failed:', error));
     }
 });
